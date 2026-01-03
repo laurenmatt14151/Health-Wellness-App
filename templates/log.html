@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Log{% endblock %}
+
+{% block content %}
+<h1>Log Health Data</h1>
+    <form method='POST'> <!-- Form to log health data -->
+        <select name="type" id="logType"required onchange="showFields()">
+            <option value="meal">Meal</option>
+            <option value="sleep">Sleep</option>
+            <option value="steps">Steps</option>
+            <option value="weight">Weight</option>
+        </select><br><br> <!-- <br><br> for spacing -->
+
+        <label>Date:</label>
+        <input type="date" name="date" required><br><br>
+
+        <div id="meal-fields">
+            <label>Food:</label>
+            <input type="text" name="food"><br><br>
+            <label>Calories:</label>
+            <input type="number" name="calories"><br><br>
+        </div>
+
+        <div id="sleep-fields" style="display:none">
+            <label>Hours:</label>
+            <input type="number" name="hours" step="0.1"><br><br> <!-- step allows decimal input -->
+        </div>
+
+        <div id="steps-fields" style="display:none">
+            <label>Count:</label>
+            <input type="number" name="count"><br><br>
+        </div>
+
+        <div id="weight-fields" style="display:none">
+            <label>Value (lbs):</label>
+            <input type="number" name="value" step="0.1"><br><br>
+        </div>
+
+        <button type="submit">Add Log</button>
+    </form>
+    <a href="/logs">View Logs</a> <!-- Link to view logs -->
+
+    <script>
+    function showFields() {
+        const logType = document.getElementById('logType').value;
+        document.getElementById('meal-fields').style.display = 'none';
+        document.getElementById('sleep-fields').style.display = 'none';
+        document.getElementById('steps-fields').style.display = 'none';
+        document.getElementById('weight-fields').style.display = 'none';
+        document.getElementById(logType + '-fields').style.display = 'block';
+    }
+    </script>
+{% endblock %}

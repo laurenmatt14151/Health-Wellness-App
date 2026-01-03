@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}View Logs{% endblock %}
+
+{% block content %}
+<h1>Health Logs</h1>
+
+<h2>Meals</h2>
+<ul>
+{% for meal in meals %}
+    <li>
+        {{ meal.id }} : {{ meal.date }} - {{ meal.food }} ({{ meal.calories }} calories)
+        <a href="/delete/meal/{{ meal.id }}">Delete</a>
+    </li>
+{% endfor %}
+</ul>
+
+<h2>Sleep</h2>
+<ul>
+{% for s in sleep %}
+    <li>
+        {{ s.id }} : {{ s.date }} - {{ s.hours }} hours
+        <a href="/delete/sleep/{{ s.id }}">Delete</a>
+    </li>
+{% endfor %}
+</ul>
+
+<h2>Steps</h2>
+<ul>
+{% for step in steps %}
+    <li>
+        {{ step.id }} : {{ step.date }} - {{ step.count }} steps
+        <a href="/delete/steps/{{ step.id }}">Delete</a>
+    </li>
+{% endfor %}
+</ul>
+
+<h2>Weight:</h2>
+<ul>
+{% for w in weight %}
+    <li>
+        {{ w.id }} : {{ w.date }} - {{ w.value }} lbs
+        <a href="/delete/weight/{{ w.id }}">Delete</a>
+    </li>
+{% endfor %}
+</ul>
+
+<a href="/log">Log New Entry</a>
+{% endblock %}
