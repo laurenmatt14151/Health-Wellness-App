@@ -58,6 +58,11 @@
 - Better layout
 - A simple dashboard page
 
+#### Retention
+*Rewrite small things for retention*
+- Rewrite 1 route
+- Rewrite a method in models
+- Rewrite 1 frame
 
 
 ### Intermediate (2-3 months)

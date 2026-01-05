@@ -8,11 +8,14 @@ import plotly.graph_objects as go
 import plotly.express as px
 from sqlalchemy import func
 
-
+'''
+__name__ is a special variable in Python that represents the name of the current module.
+app represents the Flask application instance.
+'''
 app = Flask(__name__) # Initialize the Flask application
 
 '''
-app is app
+. calls the from_object method of the Flask app's config attribute.
 .config.from_object(Config) calls the Config class from config.py to load the database settings
 '''
 app.config.from_object(Config) # Load configurations from Config class
@@ -25,7 +28,8 @@ init_app(app) # Initialize the database with the Flask app
 '''
 app_context is a built-in Flask method that provides a context for the application
 This is necessary for database operations to ensure they are executed within the app context
-App context allows access to application-specific resources like configuration and database connections
+app_context allows access to application-specific resources like configuration and database connections
+with is used to create a context block
 '''
 with app.app_context():
     # empty_db() # Clear existing data in the database
@@ -35,7 +39,11 @@ with app.app_context():
 def home():
     return render_template('home.html')
 
-'''Log route for entering health data'''
+'''
+Log route for entering health data
+GET method displays the log form
+POST method processes the submitted form data
+'''
 @app.route('/log', methods=['GET', 'POST'])
 def log():
     '''POST method to handle form submissions'''
